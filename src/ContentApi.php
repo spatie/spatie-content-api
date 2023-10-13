@@ -23,19 +23,20 @@ class ContentApi
         return $cache;
     }
 
-    public static function getPosts(string $product, int $page = 1, int $perPage = 20): Paginator
+    public static function getPosts(string $product, int $page = 1, int $perPage = 20, string $sort = '-date'): Paginator
     {
         return static::getCache()
             ->remember(
                 key: "posts-{$product}-{$page}-{$perPage}",
                 ttl: now()->addHour(),
-                callback: function () use ($page, $perPage, $product) {
+                callback: function () use ($sort, $page, $perPage, $product) {
                     $response = Http::get(static::BASE_URL.'/collections/posts/entries', [
                         'filter' => [
                             'product' => $product,
                         ],
                         'limit' => $perPage,
                         'page' => $page,
+                        'sort' => $sort,
                     ])->json();
 
                     return new Paginator(
