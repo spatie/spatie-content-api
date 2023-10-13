@@ -5,8 +5,6 @@
 [![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/spatie/spatie-content-api/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/spatie/spatie-content-api/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/spatie/spatie-content-api.svg?style=flat-square)](https://packagist.org/packages/spatie/spatie-content-api)
 
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
-
 ## Support us
 
 [<img src="https://github-ads.s3.eu-central-1.amazonaws.com/spatie-content-api.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/spatie-content-api)
@@ -23,37 +21,10 @@ You can install the package via composer:
 composer require spatie/spatie-content-api
 ```
 
-You can publish and run the migrations with:
-
-```bash
-php artisan vendor:publish --tag="spatie-content-api-migrations"
-php artisan migrate
-```
-
-You can publish the config file with:
-
-```bash
-php artisan vendor:publish --tag="spatie-content-api-config"
-```
-
-This is the contents of the published config file:
-
-```php
-return [
-];
-```
-
-Optionally, you can publish the views using
-
-```bash
-php artisan vendor:publish --tag="spatie-content-api-views"
-```
-
 ## Usage
 
 ```php
-$contentApi = new Spatie\ContentApi();
-echo $contentApi->echoPhrase('Hello, Spatie!');
+$posts = \Spatie\ContentApi\ContentApi::getPosts('mailcoach');
 ```
 
 ## Testing
