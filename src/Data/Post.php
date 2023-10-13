@@ -11,6 +11,7 @@ final readonly class Post
     public function __construct(
         public string $title,
         public string $slug,
+        public ?string $header_image,
         public string $summary,
 
         /** @property Collection<Author> */
@@ -30,6 +31,7 @@ final readonly class Post
         return new self(
             title: $post['title'],
             slug: $post['slug'],
+            header_image: $post['header_image'],
             summary: $post['summary'],
             authors: collect($post['authors'])
                 ->map(fn (array $author) => Author::fromResponse($author)),

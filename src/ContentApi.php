@@ -2,6 +2,7 @@
 
 namespace Spatie\ContentApi;
 
+use Illuminate\Cache\Repository;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
@@ -11,14 +12,25 @@ class ContentApi
 {
     const BASE_URL = 'https://content.spatie.be/api';
 
+    private static function getCache(): Repository
+    {
+        $cache = Cache::store();
+
+        if ($cache->supportsTags()) {
+            $cache = $cache->tags(['content_api']);
+        }
+
+        return $cache;
+    }
+
     public static function getPosts(string $product, int $page = 1, int $perPage = 20): Paginator
     {
-        return Cache::tags(['content-api'])
+        return static::getCache()
             ->remember(
                 key: "posts-{$product}-{$page}-{$perPage}",
                 ttl: now()->addHour(),
                 callback: function () use ($page, $perPage, $product) {
-                    $response = Http::get(self::BASE_URL.'/collections/posts/entries', [
+                    $response = Http::get(static::BASE_URL.'/collections/posts/entries', [
                         'filter' => [
                             'product' => $product,
                         ],
@@ -39,7 +51,7 @@ class ContentApi
 
     public static function getPost(string $product, string $slug): ?Post
     {
-        return Cache::tags(['content-api'])
+        return static::getCache()
             ->remember(
                 key: "post-{$product}-{$slug}",
                 ttl: now()->addHour(),
