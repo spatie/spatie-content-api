@@ -11,7 +11,7 @@ class ContentApi
 {
     const BASE_URL = 'https://content.spatie.be/api';
 
-    public static function getPosts(string $product, int $page = 1, int $perPage = 20, string $sort = '-date'): Paginator
+    public static function getPosts(string $product, int $page = 1, int $perPage = 20, string $sort = '-date', string $theme = 'github-light'): Paginator
     {
         $response = Http::get(static::BASE_URL.'/collections/posts/entries', [
             'filter' => [
@@ -20,6 +20,7 @@ class ContentApi
             'limit' => $perPage,
             'page' => $page,
             'sort' => $sort,
+            'theme' => $theme,
         ]);
 
         if (! $response->successful()) {
@@ -45,13 +46,14 @@ class ContentApi
         return $posts;
     }
 
-    public static function getPost(string $product, string $slug): ?Post
+    public static function getPost(string $product, string $slug, string $theme = 'github-light'): ?Post
     {
         $response = Http::get(self::BASE_URL.'/collections/posts/entries', [
             'filter' => [
                 'product' => $product,
                 'slug' => $slug,
             ],
+            'theme' => $theme,
         ]);
 
         if ($response->serverError()) {
