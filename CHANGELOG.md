@@ -2,6 +2,12 @@
 
 All notable changes to `spatie-content-api` will be documented in this file.
 
+## 1.2.0 - 2023-10-16
+
+- Add theme for highlighting
+
+**Full Changelog**: https://github.com/spatie/spatie-content-api/compare/1.1.3...1.2.0
+
 ## 1.1.3 - 2023-10-16
 
 **Full Changelog**: https://github.com/spatie/spatie-content-api/compare/1.1.2...1.1.3
