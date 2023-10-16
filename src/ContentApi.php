@@ -33,7 +33,7 @@ class ContentApi
         }
 
         $posts = new Paginator(
-            items: collect($response['data'])->map(function (array $post) {
+            items: collect($response['data'])->filter()->map(function (array $post) {
                 return Post::fromResponse($post);
             }),
             perPage: $perPage,
@@ -60,7 +60,11 @@ class ContentApi
             return Cache::get("post-{$product}-{$slug}");
         }
 
-        $post = Post::fromResponse($response->json('data.0'));
+        if (! $postData = $response->json('data.0')) {
+            return null;
+        }
+
+        $post = Post::fromResponse($postData);
 
         Cache::put("post-{$product}-{$slug}", $post);
 
