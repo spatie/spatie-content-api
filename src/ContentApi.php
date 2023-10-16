@@ -11,12 +11,12 @@ class ContentApi
 {
     const BASE_URL = 'https://content.spatie.be/api';
 
-    public static function getPosts(string $product, int $page = 1, int $perPage = 20, string $sort = '-date', string $theme = 'github-light'): Paginator
+    public static function getPosts(string $product, int $page = 1, int $perPage = 20, string $sort = '-date', string $theme = 'github-light', array $filters = []): Paginator
     {
         $response = Http::get(static::BASE_URL.'/collections/posts/entries', [
-            'filter' => [
+            'filter' => array_merge($filters, [
                 'product' => $product,
-            ],
+            ]),
             'limit' => $perPage,
             'page' => $page,
             'sort' => $sort,
