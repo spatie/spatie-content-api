@@ -15,13 +15,13 @@ it('can get posts', function () {
             'data' => [
                 ['title' => 'A post', 'slug' => 'a-post', 'header_image' => null, 'summary' => 'summary', 'authors' => [], 'content' => [], 'published' => true, 'date' => now()->format('Y-m-d H:i:s'), 'updated_at' => now()->format('Y-m-d H:i:s')],
             ],
-        ])
+        ]),
     ]);
 
     $posts = ContentApi::getPosts('mailcoach');
 
     expect($posts->count())->toBe(1);
-    expect(Cache::has("posts-mailcoach-1-20--date"))->toBeTrue();
+    expect(Cache::has('posts-mailcoach-1-20--date'))->toBeTrue();
 });
 
 it('returns a cached version when the request fails', function () {
@@ -48,13 +48,13 @@ it('can get a post', function () {
             'data' => [
                 ['title' => 'A post', 'slug' => 'a-post', 'header_image' => null, 'summary' => 'summary', 'authors' => [], 'content' => [], 'published' => true, 'date' => now()->format('Y-m-d H:i:s'), 'updated_at' => now()->format('Y-m-d H:i:s')],
             ],
-        ])
+        ]),
     ]);
 
     $post = ContentApi::getPost('mailcoach', 'a-post');
 
-    expect($post->title)->toBe("A post");
-    expect(Cache::has("post-mailcoach-a-post"))->toBeTrue();
+    expect($post->title)->toBe('A post');
+    expect(Cache::has('post-mailcoach-a-post'))->toBeTrue();
 });
 
 it('returns a cached version of a post when the request fails', function () {
@@ -72,6 +72,6 @@ it('returns a cached version of a post when the request fails', function () {
     ContentApi::getPost('mailcoach', 'a-post');
     $post = ContentApi::getPost('mailcoach', 'a-post');
 
-    expect($post->title)->toBe("A post");
-    expect(Cache::has("post-mailcoach-a-post"))->toBeTrue();
+    expect($post->title)->toBe('A post');
+    expect(Cache::has('post-mailcoach-a-post'))->toBeTrue();
 });
