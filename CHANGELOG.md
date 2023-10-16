@@ -2,6 +2,10 @@
 
 All notable changes to `spatie-content-api` will be documented in this file.
 
+## 1.1.3 - 2023-10-16
+
+**Full Changelog**: https://github.com/spatie/spatie-content-api/compare/1.1.2...1.1.3
+
 ## 1.1.2 - 2023-10-16
 
 - Return the cached version on error
