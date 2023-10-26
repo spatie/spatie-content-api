@@ -2,7 +2,9 @@
 
 namespace Spatie\ContentApi;
 
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 use Spatie\ContentApi\Data\Post;
@@ -33,12 +35,22 @@ class ContentApi
             return new Paginator([], $perPage, $page);
         }
 
+        $data = collect($response->json('data'))->filter()->map(function (array $post) {
+            return Post::fromResponse($post);
+        });
+
+        /**
+         * When the API has more data, fake an extra item so the "next page" link appears
+         */
+        $paddedData = $data->when($data->count() === $perPage && $response->json('meta.last_page') > $page, fn ($data) => $data->add([]));
+
         $posts = new Paginator(
-            items: collect($response['data'])->filter()->map(function (array $post) {
-                return Post::fromResponse($post);
-            }),
+            items: $paddedData,
             perPage: $perPage,
             currentPage: $page,
+            options: [
+                'path' => Paginator::resolveCurrentPath(),
+            ]
         );
 
         Cache::put("posts-{$product}-{$page}-{$perPage}-{$sort}", $posts);
