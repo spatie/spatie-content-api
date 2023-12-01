@@ -11,6 +11,8 @@ class ContentApi
 {
     const BASE_URL = 'https://content.spatie.be/api';
 
+    const CACHE_TTL = 5 * 60;
+
     public static function getPosts(string $product, int $page = 1, int $perPage = 20, string $sort = '-date', string $theme = 'github-light', array $filters = []): Paginator
     {
         $response = Http::get(static::BASE_URL.'/collections/posts/entries', [
@@ -51,7 +53,7 @@ class ContentApi
             ]
         );
 
-        Cache::put("posts-{$product}-{$page}-{$perPage}-{$sort}", $posts);
+        Cache::put("posts-{$product}-{$page}-{$perPage}-{$sort}", $posts, self::CACHE_TTL);
 
         return $posts;
     }
@@ -78,7 +80,7 @@ class ContentApi
 
         $post = Post::fromResponse($postData);
 
-        Cache::put("post-{$product}-{$slug}", $post);
+        Cache::put("post-{$product}-{$slug}", $post, self::CACHE_TTL);
 
         return $post;
     }
