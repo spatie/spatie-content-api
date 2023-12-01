@@ -2,6 +2,10 @@
 
 All notable changes to `spatie-content-api` will be documented in this file.
 
+## 1.5.0 - 2023-12-01
+
+- add support for video
+
 ## 1.4.1 - 2023-10-26
 
 **Full Changelog**: https://github.com/spatie/spatie-content-api/compare/1.4.0...1.4.1
