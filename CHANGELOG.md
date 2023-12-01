@@ -2,6 +2,10 @@
 
 All notable changes to `spatie-content-api` will be documented in this file.
 
+## 1.6.0 - 2023-12-01
+
+- Add Cache TTL
+
 ## 1.5.0 - 2023-12-01
 
 - add support for video
