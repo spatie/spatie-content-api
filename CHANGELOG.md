@@ -2,6 +2,12 @@
 
 All notable changes to `spatie-content-api` will be documented in this file.
 
+## 2.1.0 - 2023-12-14
+
+* Adds loop & autoplay to the Video set
+
+**Full Changelog**: https://github.com/spatie/spatie-content-api/compare/2.0.1...2.1.0
+
 ## 2.0.1 - 2023-12-14
 
 **Full Changelog**: https://github.com/spatie/spatie-content-api/compare/2.0.0...2.0.1
