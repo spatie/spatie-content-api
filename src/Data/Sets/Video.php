@@ -10,6 +10,8 @@ final readonly class Video implements Set
         public string $video,
         public string $embedUrl,
         public ?string $videoId,
+        public bool $autoplay = false,
+        public bool $loop = false,
     ) {
     }
 
