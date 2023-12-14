@@ -11,7 +11,7 @@ beforeEach(function () {
 
 it('can get posts', function () {
     Http::fake([
-        'https://content.spatie.be/api/collections/posts/entries?filter%5Bproduct%5D=mailcoach&limit=20&page=1&sort=-date' => Http::response([
+        'https://content.spatie.be/api/collections/posts/entries?filter%5Bproduct%5D=mailcoach&limit=20&page=1&sort=-date&theme=github-light' => Http::response([
             'data' => [
                 ['title' => 'A post', 'slug' => 'a-post', 'header_image' => null, 'summary' => 'summary', 'authors' => [], 'content' => [], 'published' => true, 'date' => now()->format('Y-m-d H:i:s'), 'updated_at' => now()->format('Y-m-d H:i:s')],
             ],
@@ -26,7 +26,7 @@ it('can get posts', function () {
 
 it('returns a cached version when the request fails', function () {
     Http::fake([
-        'https://content.spatie.be/api/collections/posts/entries?filter%5Bproduct%5D=mailcoach&limit=20&page=1&sort=-date' => Http::sequence([
+        'https://content.spatie.be/api/collections/posts/entries?filter%5Bproduct%5D=mailcoach&limit=20&page=1&sort=-date&theme=github-light' => Http::sequence([
             Http::response([
                 'data' => [
                     ['title' => 'A post', 'slug' => 'a-post', 'header_image' => null, 'summary' => 'summary', 'authors' => [], 'content' => [], 'published' => true, 'date' => now()->format('Y-m-d H:i:s'), 'updated_at' => now()->format('Y-m-d H:i:s')],
@@ -44,7 +44,7 @@ it('returns a cached version when the request fails', function () {
 
 it('can get a post', function () {
     Http::fake([
-        'https://content.spatie.be/api/collections/posts/entries?filter%5Bproduct%5D=mailcoach&filter%5Bslug%5D=a-post' => Http::response([
+        'https://content.spatie.be/api/collections/posts/entries?filter%5Bproduct%5D=mailcoach&filter%5Bslug%5D=a-post&theme=github-light' => Http::response([
             'data' => [
                 ['title' => 'A post', 'slug' => 'a-post', 'header_image' => null, 'summary' => 'summary', 'authors' => [], 'content' => [], 'published' => true, 'date' => now()->format('Y-m-d H:i:s'), 'updated_at' => now()->format('Y-m-d H:i:s')],
             ],
@@ -59,7 +59,7 @@ it('can get a post', function () {
 
 it('returns a cached version of a post when the request fails', function () {
     Http::fake([
-        'https://content.spatie.be/api/collections/posts/entries?filter%5Bproduct%5D=mailcoach&filter%5Bslug%5D=a-post' => Http::sequence([
+        'https://content.spatie.be/api/collections/posts/entries?filter%5Bproduct%5D=mailcoach&filter%5Bslug%5D=a-post&theme=github-light' => Http::sequence([
             Http::response([
                 'data' => [
                     ['title' => 'A post', 'slug' => 'a-post', 'header_image' => null, 'summary' => 'summary', 'authors' => [], 'content' => [], 'published' => true, 'date' => now()->format('Y-m-d H:i:s'), 'updated_at' => now()->format('Y-m-d H:i:s')],
