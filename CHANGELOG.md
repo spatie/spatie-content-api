@@ -2,6 +2,15 @@
 
 All notable changes to `spatie-content-api` will be documented in this file.
 
+## 3.0.0 - 2024-01-08
+
+### What's Changed
+
+* Bump aglipanci/laravel-pint-action from 2.3.0 to 2.3.1 by @dependabot in https://github.com/spatie/spatie-content-api/pull/4
+* Change content from sets to html string
+
+**Full Changelog**: https://github.com/spatie/spatie-content-api/compare/2.1.0...3.0.0
+
 ## 2.1.0 - 2023-12-14
 
 * Adds loop & autoplay to the Video set
