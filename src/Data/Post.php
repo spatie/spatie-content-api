@@ -5,7 +5,6 @@ namespace Spatie\ContentApi\Data;
 use Carbon\CarbonInterface;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Date;
-use Spatie\ContentApi\Data\Sets\SetFactory;
 
 final readonly class Post
 {
@@ -21,8 +20,7 @@ final readonly class Post
         /** @property string[] */
         public array $tags,
 
-        /** @property Collection<Set> */
-        public Collection $content,
+        public string $content,
 
         public bool $published,
         public CarbonInterface $date,
@@ -40,8 +38,7 @@ final readonly class Post
             authors: collect($post['authors'])
                 ->map(fn (array $author) => Author::fromResponse($author)),
             tags: $post['tags'] ?? [],
-            content: collect($post['content'])
-                ->map(fn (array $content) => SetFactory::fromResponse($content)),
+            content: $post['content'],
             published: $post['published'],
             date: Date::parse($post['date']),
             updated_at: Date::parse($post['updated_at']),
