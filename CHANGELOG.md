@@ -2,6 +2,19 @@
 
 All notable changes to `spatie-content-api` will be documented in this file.
 
+## 3.1.0 - 2024-03-11
+
+### What's Changed
+
+* Bump ramsey/composer-install from 2 to 3 by @dependabot in https://github.com/spatie/spatie-content-api/pull/5
+* Laravel 11 by @Nielsvanpach in https://github.com/spatie/spatie-content-api/pull/6
+
+### New Contributors
+
+* @Nielsvanpach made their first contribution in https://github.com/spatie/spatie-content-api/pull/6
+
+**Full Changelog**: https://github.com/spatie/spatie-content-api/compare/3.0.0...3.1.0
+
 ## 3.0.0 - 2024-01-08
 
 ### What's Changed
