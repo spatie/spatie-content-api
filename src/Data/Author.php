@@ -7,8 +7,7 @@ final readonly class Author
     public function __construct(
         public string $name,
         public string $gravatar_url,
-    ) {
-    }
+    ) {}
 
     public static function fromResponse(array $author): self
     {

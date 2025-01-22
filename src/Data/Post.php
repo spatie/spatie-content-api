@@ -26,8 +26,7 @@ final readonly class Post
         public bool $published,
         public CarbonInterface $date,
         public CarbonInterface $updated_at,
-    ) {
-    }
+    ) {}
 
     public static function fromResponse(array $post): self
     {
