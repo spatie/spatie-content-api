@@ -12,6 +12,7 @@ final readonly class Post
         public string $title,
         public string $slug,
         public ?string $header_image,
+        public ?string $og_image,
         public ?string $summary,
 
         /** @property Collection<Author> */
@@ -34,6 +35,7 @@ final readonly class Post
             title: $post['title'],
             slug: $post['slug'],
             header_image: $post['header_image'],
+            og_image: $post['og_image'] ?? null,
             summary: $post['summary'],
             authors: collect($post['authors'])
                 ->map(fn (array $author) => Author::fromResponse($author)),
