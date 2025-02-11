@@ -2,6 +2,16 @@
 
 All notable changes to `spatie-content-api` will be documented in this file.
 
+## 3.3.0 - 2025-02-11
+
+### What's Changed
+
+* Add header image presets
+* Bump dependabot/fetch-metadata from 2.2.0 to 2.3.0 by @dependabot in https://github.com/spatie/spatie-content-api/pull/11
+* Bump aglipanci/laravel-pint-action from 2.4 to 2.5 by @dependabot in https://github.com/spatie/spatie-content-api/pull/12
+
+**Full Changelog**: https://github.com/spatie/spatie-content-api/compare/3.2.0...3.3.0
+
 ## 3.2.0 - 2025-01-22
 
 ### What's Changed
