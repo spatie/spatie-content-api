@@ -13,7 +13,7 @@ it('can get posts', function () {
     Http::fake([
         'https://content.spatie.be/api/collections/posts/entries?filter%5Bproduct%5D=mailcoach&limit=20&page=1&sort=-date&theme=github-light' => Http::response([
             'data' => [
-                ['title' => 'A post', 'slug' => 'a-post', 'header_image' => null, 'summary' => 'summary', 'authors' => [], 'content' => '', 'published' => true, 'date' => now()->format('Y-m-d H:i:s'), 'updated_at' => now()->format('Y-m-d H:i:s')],
+                ['title' => 'A post', 'slug' => 'a-post', 'header_image' => null, 'header_image_presets' => ['w-320' => ['url' => 'test', 'width' => 320, 'height' => 320]], 'summary' => 'summary', 'authors' => [], 'content' => '', 'published' => true, 'date' => now()->format('Y-m-d H:i:s'), 'updated_at' => now()->format('Y-m-d H:i:s')],
             ],
         ]),
     ]);
@@ -21,6 +21,7 @@ it('can get posts', function () {
     $posts = ContentApi::getPosts('mailcoach');
 
     expect($posts->count())->toBe(1);
+    expect($posts->first()->header_image_presets->count())->toBe(1);
     expect(Cache::has('posts-mailcoach-1-20--date'))->toBeTrue();
 });
 

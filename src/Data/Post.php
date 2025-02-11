@@ -12,6 +12,9 @@ final readonly class Post
         public string $title,
         public string $slug,
         public ?string $header_image,
+
+        /** @property Collection<ImagePreset> */
+        public Collection $header_image_presets,
         public ?string $og_image,
         public ?string $summary,
 
@@ -34,6 +37,8 @@ final readonly class Post
             title: $post['title'],
             slug: $post['slug'],
             header_image: $post['header_image'],
+            header_image_presets: collect($post['header_image_presets'] ?? [])
+                ->map(fn (array $imagePreset, string $name) => ImagePreset::fromResponse($name, $imagePreset)),
             og_image: $post['og_image'] ?? null,
             summary: $post['summary'],
             authors: collect($post['authors'])
