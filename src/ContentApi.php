@@ -58,13 +58,13 @@ class ContentApi
         return $posts;
     }
 
-    public static function getPost(string $product, string $slug, string $theme = 'github-light'): ?Post
+    public static function getPost(string $product, string $slug, string $theme = 'github-light', array $filters = []): ?Post
     {
         $response = Http::get(self::BASE_URL.'/collections/posts/entries', [
-            'filter' => [
+            'filter' => array_merge($filters, [
                 'product' => $product,
                 'slug' => $slug,
-            ],
+            ]),
             'theme' => $theme,
         ]);
 
