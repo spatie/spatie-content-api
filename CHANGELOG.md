@@ -2,6 +2,10 @@
 
 All notable changes to `spatie-content-api` will be documented in this file.
 
+## 3.4.0 - 2025-04-23
+
+**Full Changelog**: https://github.com/spatie/spatie-content-api/compare/3.3.0...3.4.0
+
 ## 3.3.0 - 2025-02-11
 
 ### What's Changed
