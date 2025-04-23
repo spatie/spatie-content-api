@@ -64,6 +64,7 @@ class ContentApi
             'filter' => array_merge($filters, [
                 'product' => $product,
                 'slug' => $slug,
+                'published:in' => 'true|false',
             ]),
             'theme' => $theme,
         ]);
