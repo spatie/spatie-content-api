@@ -2,6 +2,20 @@
 
 All notable changes to `spatie-content-api` will be documented in this file.
 
+## 3.4.2 - 2025-10-13
+
+### What's Changed
+
+* Bump dependabot/fetch-metadata from 2.3.0 to 2.4.0 by @dependabot[bot] in https://github.com/spatie/spatie-content-api/pull/13
+* Bump aglipanci/laravel-pint-action from 2.5 to 2.6 by @dependabot[bot] in https://github.com/spatie/spatie-content-api/pull/15
+* Update issue template by @AlexVanderbist in https://github.com/spatie/spatie-content-api/pull/17
+
+### New Contributors
+
+* @AlexVanderbist made their first contribution in https://github.com/spatie/spatie-content-api/pull/17
+
+**Full Changelog**: https://github.com/spatie/spatie-content-api/compare/3.4.1...3.4.2
+
 ## 3.4.1 - 2025-04-23
 
 **Full Changelog**: https://github.com/spatie/spatie-content-api/compare/3.4.0...3.4.1
