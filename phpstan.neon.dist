@@ -10,11 +10,9 @@ parameters:
 
     checkModelProperties: true
     checkOctaneCompatibility: false
-    checkMissingIterableValueType: false
     reportUnmatchedIgnoredErrors: false
     noUnnecessaryCollectionCall: true
     checkNullables: true
-    checkGenericClassInNonGenericObjectType: false
     treatPhpDocTypesAsCertain: false
 
     ignoreErrors:

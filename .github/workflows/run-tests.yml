@@ -8,15 +8,17 @@ jobs:
   test:
     runs-on: ${{ matrix.os }}
     strategy:
-      fail-fast: true
+      fail-fast: false
       matrix:
         os: [ubuntu-latest]
-        php: [8.3]
-        laravel: ['11.*', '12.*', '13.*']
+        php: ['8.3', '8.4', '8.5', '8.6']
+        laravel: ['12.*', '13.*']
         stability: [prefer-lowest, prefer-stable]
+        exclude:
+          # Testbench 10 requires Symfony Process 7; PHP 8.6 needs Pest 5 and Process 8.
+          - php: '8.6'
+            laravel: '12.*'
         include:
-          - laravel: 11.*
-            testbench: ^9.0
           - laravel: 12.*
             testbench: ^10.0
           - laravel: 13.*
@@ -43,7 +45,7 @@ jobs:
       - name: Install dependencies
         run: |
           composer require "laravel/framework:${{ matrix.laravel }}" "nesbot/carbon:^3.0" "orchestra/testbench:${{ matrix.testbench }}" --no-interaction --no-update
-          composer update --${{ matrix.stability }} --prefer-dist --no-interaction --no-suggest
+          composer update --${{ matrix.stability }} --prefer-dist --no-interaction
 
       - name: List Installed Dependencies
         run: composer show -D
